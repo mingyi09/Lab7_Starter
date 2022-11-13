@@ -86,8 +86,8 @@ async function getRecipes() {
   return new Promise(async (resolve, reject) => {
     try{
       for (const recipe_url in RECIPE_URLS){
-        let res_url = await fetch(recipe_url) ;
-        let recipeJSON = await res_url.json();
+        let response = await fetch(RECIPE_URLS[recipe_url]) ;
+        let recipeJSON = await response.json();
         recipesArray.push(recipeJSON);
       }
       saveRecipesToStorage(recipesArray);
